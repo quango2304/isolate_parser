@@ -15,7 +15,8 @@ abstract class IsolateParserInterface {
   ///
   /// This method should be called before using the isolate for parsing data.
   /// It sets up the necessary resources and prepares the isolate for parsing.
-  Future<void> init();
+  /// this is not a future task so you should call it as soon as possible, could be in run app method
+  void init();
 
   /// Parses a single data object using the provided [parser].
   ///
@@ -65,13 +66,12 @@ class IsolateParser implements IsolateParserInterface {
   StreamSubscription? _sub;
 
   @override
-  Future<void> init() async {
+  void init() async {
     _isolate = await Isolate.spawn(
       _isolateFunc,
       _mainReceivePort.sendPort,
     );
     _listenToData();
-    return _initCompleter.future;
   }
 
   @override
@@ -79,7 +79,7 @@ class IsolateParser implements IsolateParserInterface {
     String dataNeedParse,
     MapParser<Result> parser,
   ) async {
-    assert(_initCompleter.isCompleted == true, "must call init first");
+    await _initCompleter.future;
     return _parseData(dataNeedParse, parser);
   }
 
@@ -88,7 +88,7 @@ class IsolateParser implements IsolateParserInterface {
     String dataNeedParse,
     ListParser<Result> parser,
   ) async {
-    assert(_initCompleter.isCompleted == true, "must call init first");
+    await _initCompleter.future;
     return _parseData(dataNeedParse, parser);
   }
 

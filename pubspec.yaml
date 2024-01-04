@@ -1,7 +1,7 @@
 name: isolate_parser
-description: "A new Flutter project."
+description: "a dart package support parsing json data in 1 single isolate"
 version: 0.0.1
-homepage:
+homepage: https://github.com/quango2304/isolate_parser
 
 environment:
   sdk: '>=3.2.2 <4.0.0'

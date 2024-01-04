@@ -1,6 +1,6 @@
 # Isolate JSON Parser
 
-A Flutter package that provides a mechanism for decoding JSON strings into Dart objects and parsing JSON to data models efficiently within a single isolate.
+A Dart package that provides a mechanism for decoding JSON strings into Dart objects and parsing JSON to data models efficiently within a single isolate.
 
 ## Features
 
@@ -15,7 +15,7 @@ using compute function.
 ```
 final IsolateParserInterface parser = IsolateParser();
 // Initialize the parser
-await parser.init();
+parser.init();
 ```
 
 ## Parse a Single Data Object

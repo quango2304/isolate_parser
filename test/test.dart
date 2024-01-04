@@ -7,7 +7,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() async {
   IsolateParserInterface isolate = IsolateParser();
-  await isolate.init();
+  isolate.init();
   final jsonString = jsonEncode(sampleJson);
   final listJson = jsonEncode([sampleJson]);
 
@@ -39,5 +39,7 @@ void main() async {
     );
     expect(result, isA<List<Data>>());
   });
-  isolate.dispose();
+  tearDownAll(() {
+    isolate.dispose();
+  });
 }
