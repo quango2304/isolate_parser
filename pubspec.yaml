@@ -1,6 +1,6 @@
 name: isolate_parser
 description: "a dart package support parsing json data in 1 single isolate"
-version: 0.0.1
+version: 1.0.0
 homepage: https://github.com/quango2304/isolate_parser
 
 environment:
